@@ -123,8 +123,8 @@ namespace WebApiRESTful_Demo_5.Models
 
             context.Entry(author).State = EntityState.Modified; 
 
-            context.Update(author);
-            context.SaveChanges();
+            //context.Update(author); // entity will be updated even without this line. When SaveChanges() method is called it will EF Core will update the corresponding row in the database table. 
+            context.SaveChanges(); 
 
             return author; 
 
