@@ -10,7 +10,7 @@ using WebApiRESTful_Demo_5.Models;
 namespace WebApiRESTful_Demo_5.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230721041207_InitialCreate")]
+    [Migration("20230721071156_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -28,6 +28,7 @@ namespace WebApiRESTful_Demo_5.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("LastName")
@@ -52,8 +53,8 @@ namespace WebApiRESTful_Demo_5.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Title")
-                        .HasMaxLength(25)
-                        .HasColumnType("varchar(25)");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("BookId");
 

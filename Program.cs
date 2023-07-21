@@ -15,7 +15,8 @@ public class Program
 
         var b = builder.Configuration.GetConnectionString("MySqlDefault");
         builder.Services.AddDbContextPool<AppDbContext>((op) => op.UseMySQL(b));
-        builder.Services.AddTransient<IBookInterface, MySQLBookRepository>(); 
+        builder.Services.AddTransient<IBookInterface, MySQLBookRepository>();
+        builder.Services.AddTransient<IAuthorInterface, MySQLAuthorRepository>(); 
 
 
 

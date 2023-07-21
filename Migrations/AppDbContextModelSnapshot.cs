@@ -25,6 +25,7 @@ namespace WebApiRESTful_Demo_5.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("LastName")
@@ -49,8 +50,8 @@ namespace WebApiRESTful_Demo_5.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Title")
-                        .HasMaxLength(25)
-                        .HasColumnType("varchar(25)");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("BookId");
 

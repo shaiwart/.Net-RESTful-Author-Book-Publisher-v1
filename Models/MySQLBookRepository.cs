@@ -61,10 +61,10 @@ namespace WebApiRESTful_Demo_5.Models
 
             // 
             var tempBook = context.BooksTable.Find(id);
-            if(tempBook == null)
-            {
-                return null; 
-            }
+            //if (tempBook == null)
+            //{
+            //    return null;
+            //}
 
             return tempBook; 
 

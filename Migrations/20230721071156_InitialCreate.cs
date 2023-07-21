@@ -20,7 +20,7 @@ namespace WebApiRESTful_Demo_5.Migrations
                 {
                     AuthorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    FirstName = table.Column<string>(type: "longtext", nullable: true),
+                    FirstName = table.Column<string>(type: "longtext", nullable: false),
                     LastName = table.Column<string>(type: "longtext", nullable: true)
                 },
                 constraints: table =>
@@ -35,7 +35,7 @@ namespace WebApiRESTful_Demo_5.Migrations
                 {
                     BookId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(type: "varchar(25)", maxLength: 25, nullable: true),
+                    Title = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
                     AuthorId = table.Column<int>(type: "int", nullable: false),
                     Isbn = table.Column<string>(type: "longtext", nullable: false)
                 },
