@@ -61,27 +61,45 @@ namespace WebApiRESTful_Demo_5.Models
         {
             // Give the AuthorName and it will return all the books writtn by the author
 
+
+
+
+
+            // JUGAD
+
             // 1. find out that the author is present or not
             // 1.1 and Get the AuthorId 
             // 2. find all the books in the books table where AuthorId is == the above AuthorId
 
-            var tempAuthor = context.AuthorTable.Where((author) => author.FirstName == authorName); // #NeedImprovements: must match both firstname and lastname
-            if(tempAuthor == null)
-            {
-                return null; 
-            }
+            //var tempAuthor = context.AuthorTable.Where((author) => author.FirstName == authorName); // #NeedImprovements: must match both firstname and lastname
+            //if(tempAuthor == null)
+            //{
+            //    return null; 
+            //}
 
-            var tempList = tempAuthor.ToList();
-            int authorId = 0; 
+            //var tempList = tempAuthor.ToList();
+            //int authorId = 0; 
 
-            foreach(Author author in tempList)
-            {
-                authorId = author.AuthorId;
-                break; 
-            } // Now got the author id 
+            //foreach(Author author in tempList)
+            //{
+            //    authorId = author.AuthorId;
+            //    break; 
+            //} // Now got the author id 
 
-            var listOfBooks = context.BooksTable.Where((book) => book.AuthorId == authorId).ToList();
-            return listOfBooks; 
+            //var listOfBooks = context.BooksTable.Where((book) => book.AuthorId == authorId).ToList();
+            //return listOfBooks;
+
+
+
+
+
+            // QUERY
+            var result = from author in  context.AuthorTable
+                         join book in context.BooksTable on author.AuthorId equals book.AuthorId
+                         where author.FirstName.Contains(authorName)
+                         select new { author.FirstName, book.Title };
+
+            return result.ToList();
 
         }
 
@@ -103,27 +121,32 @@ namespace WebApiRESTful_Demo_5.Models
         // UPDATE- update author 
         public Author UpdateAuthor(int id, Author author)
         {
-            //var temp = context.AuthorTable.Find(id); 
-            //if (temp == null) 
+            //var temp = context.AuthorTable.Find(id);
+            //if (temp == null)
             //{
-            //    return null; 
+            //    return null;
             //}
 
-            //context.AuthorTable.Update(author); 
-            //context.SaveChanges(); 
+            //context.AuthorTable.Update(author);
+            //context.SaveChanges();
             //return author;
 
 
 
             // Mam's code
-            if(id != author.AuthorId)
+            if (id != author.AuthorId)
             {
                 return null; 
             }
 
             context.Entry(author).State = EntityState.Modified; 
 
-            //context.Update(author); // entity will be updated even without this line. When SaveChanges() method is called it will EF Core will update the corresponding row in the database table. 
+            context.Update(author); 
+
+            // entity will be updated even without this line.
+            //When SaveChanges() method is called it will EF Core will update the
+            //corresponding row in the database table.
+
             context.SaveChanges(); 
 
             return author; 
