@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/WebApiRESTful-Demo_5.props" />
+</Project>
