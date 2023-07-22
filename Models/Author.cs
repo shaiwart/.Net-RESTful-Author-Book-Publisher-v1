@@ -15,12 +15,14 @@ namespace WebApiRESTful_Demo_5.Models
 		public string? LastName { get; set; }
 
 
-		// This is not property of the Author entiry. This just tells the relation btwn Author & Book
+
+
+		// This is not property of the Author entity. This just shows the relation btwn Author & Book
 		// ** one to many relation: one author can have multiple books. 
 		// one to one relation: one book can have only one author.
 
 		// Author you will be appear in multiple books,
-		// in the Books table there is one column for you i.e. AutthorId 
+		// in the Books table there is one column for you i.e. AuthorId
 		public ICollection<Book>? Books { get; set; }
 	}
 }

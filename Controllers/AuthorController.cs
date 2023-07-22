@@ -47,7 +47,7 @@ namespace WebApiRESTful_Demo_5.Controllers
 
 
         // UPDATE 
-        [HttpPut("{id}")]
+        [HttpPut("{id}")] 
         public Author UpdateAuthor(int id, Author author)
         {
             return authorRepo.UpdateAuthor(id, author); 

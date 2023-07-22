@@ -12,6 +12,8 @@ namespace WebApiRESTful_Demo_5.Models
 
 		public DbSet<Book> BooksTable { get; set; }
 		public DbSet<Author> AuthorTable { get; set; }
+        public DbSet<Publisher> PublisherTable { get; set; }
+
 	}
 }
 

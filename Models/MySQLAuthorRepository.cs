@@ -87,17 +87,17 @@ namespace WebApiRESTful_Demo_5.Models
             //} // Now got the author id 
 
             //var listOfBooks = context.BooksTable.Where((book) => book.AuthorId == authorId).ToList();
-            //return listOfBooks;
+            //return listOfBooks; 
 
 
 
 
 
-            // QUERY
-            var result = from author in  context.AuthorTable
-                         join book in context.BooksTable on author.AuthorId equals book.AuthorId
-                         where author.FirstName.Contains(authorName)
-                         select new { author.FirstName, book.Title };
+            // QUERY- LinQ 
+            var result = from authorAbc in  context.AuthorTable
+                         join book in context.BooksTable on authorAbc.AuthorId equals book.AuthorId
+                         where authorAbc.FirstName.Contains(authorName)
+                         select new { authorAbc.FirstName, book.Title };
 
             return result.ToList();
 
@@ -133,6 +133,8 @@ namespace WebApiRESTful_Demo_5.Models
 
 
 
+
+
             // Mam's code
             if (id != author.AuthorId)
             {
@@ -141,10 +143,10 @@ namespace WebApiRESTful_Demo_5.Models
 
             context.Entry(author).State = EntityState.Modified; 
 
-            context.Update(author); 
+            //context.Update(author); // Isko nahi likhne se bhi chalta hai. 
 
             // entity will be updated even without this line.
-            //When SaveChanges() method is called it will EF Core will update the
+            //When SaveChanges() method is called EF Core will update the
             //corresponding row in the database table.
 
             context.SaveChanges(); 
