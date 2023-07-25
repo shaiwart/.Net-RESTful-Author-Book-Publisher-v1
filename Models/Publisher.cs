@@ -5,7 +5,6 @@ namespace WebApiRESTful_Demo_5.Models
 {
 	public class Publisher
 	{
-
 		
 		public int PublisherId { get; set; }
 
