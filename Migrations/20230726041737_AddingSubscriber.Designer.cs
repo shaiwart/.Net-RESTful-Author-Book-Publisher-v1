@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApiRESTful_Demo_5.Models;
 
@@ -10,9 +11,11 @@ using WebApiRESTful_Demo_5.Models;
 namespace WebApiRESTful_Demo_5.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230726041737_AddingSubscriber")]
+    partial class AddingSubscriber
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,7 +46,7 @@ namespace WebApiRESTful_Demo_5.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("AuthorId")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Isbn")
@@ -88,13 +91,13 @@ namespace WebApiRESTful_Demo_5.Migrations
                 {
                     b.HasOne("WebApiRESTful_Demo_5.Models.Author", null)
                         .WithMany("Books")
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("WebApiRESTful_Demo_5.Models.Publisher", "publisher")
+                    b.HasOne("WebApiRESTful_Demo_5.Models.Publisher", null)
                         .WithMany("Books")
                         .HasForeignKey("PublisherId");
-
-                    b.Navigation("publisher");
                 });
 
             modelBuilder.Entity("WebApiRESTful_Demo_5.Models.Author", b =>

@@ -17,14 +17,16 @@ namespace WebApiRESTful_Demo_5.Models
         //Author Class ==> public ICollection<Book>? Books { get; set; }
 		// we went to Author and tell it that you will appear in multiple Books
 		// and one column will be there for you as AuthorId 
-        public int AuthorId { get; set; }
+        public int? AuthorId { get; set; }
 
 
-		public int PublisherId { get; set; } 
-
+		//public int? PublisherId { get; set; } 
+		//public Publisher publisher { get; set; }
 
 		[Required(ErrorMessage ="ISBN Required")] 
-		public string? Isbn { get; set; } 
+		public string? Isbn { get; set; }
+
+		public string? DummyCol { get; set; }
 	}
 }
 
